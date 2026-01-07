@@ -1,0 +1,7 @@
+--PART 2 --Nosql (Mongodb) Requirements
+
+#Mongodb was used as Nosql Database
+MongoDB == 6.0
+
+#Mongodbcompass was used as GUI tool for execution
+Mongodbcompass

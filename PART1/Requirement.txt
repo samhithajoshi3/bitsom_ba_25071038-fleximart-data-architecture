@@ -1,0 +1,2 @@
+Pandas
+Mysql-connector-python

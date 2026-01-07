@@ -1,0 +1,152 @@
+==============================
+ FLEXIMART – DATA QUALITY REPORT
+==============================
+
+ETL Script: etl_pipeline.py
+Execution Status: SUCCESS (Cleaning + Load completed)
+
+--------------------------------------------------
+1. CUSTOMERS DATA QUALITY SUMMARY
+--------------------------------------------------
+
+Source File: customers_raw.csv
+
+Records processed: 26
+Duplicates removed: 1
+Missing values handled: 0
+(No rows removed for missing customer_id; missing emails were auto-generated but not counted as row removals)
+Records loaded successfully: 25
+
+Clean Output File: customers_clean.csv
+
+--------------------------------------------------
+2. PRODUCTS DATA QUALITY SUMMARY
+--------------------------------------------------
+
+Source File: products_raw.csv
+
+Records Processed: 20
+Duplicates Removed: 0 
+(No Duplicates)
+Final Clean Records: 20
+Records Loaded Successfully: 20
+
+Data Quality Actions:
+- Category normalization:
+  electronics → Electronics
+  fashion → Fashion
+  groceries → Groceries
+  others → Other
+- Product names trimmed and title-cased
+- Missing price values filled using category median
+- Missing stock_quantity filled with 0
+
+
+Missing Values Handled:
+- price → filled using category median
+- stock_quantity → filled with 0
+- category → filled with "Other"
+
+Clean Output File: products_clean.csv
+
+--------------------------------------------------
+3. SALES DATA QUALITY SUMMARY
+--------------------------------------------------
+
+Source File: sales_raw.csv
+
+Records Processed: 41
+
+Data Cleaning Results:
+
+Garbage Records:
+- Rows removed due to missing / blank transaction_id: 0
+
+Duplicates:
+Duplicate transaction_id records removed: 1
+
+Missing Values:
+- Rows dropped due to missing customer_id: 3
+- Rows dropped due to missing product_id: 2
+- Rows dropped due to empty customer_id / product_id: 0
+
+Date Validation:
+- Invalid transaction dates after cleaning: 0
+- Mixed date format warnings observed but successfully parsed
+
+Derived Columns: 
+total_amount = quantity × unit_price
+
+Final Clean Records:
+- Sales records after all cleaning steps: 35
+
+NULL Validation (Post-cleaning):
+- transaction_id: 0
+- customer_id: 0
+- product_id: 0
+- quantity: 0
+- unit_price: 0
+- total_amount: 0
+- transaction_date: 0
+
+Total Amount Validation:
+- Minimum total_amount: 960.0
+- Maximum total_amount: 69999.0
+
+Clean Output File:
+- sales_clean.csv
+
+--------------------------------------------------
+4. LOAD PHASE DATA QUALITY SUMMARY
+--------------------------------------------------
+
+Mapping Results:
+- Product map created: 20
+- Customer map created: 25
+- Customer lookup created successfully
+
+Orders Load:
+- Orders attempted: 35
+- Orders inserted: 35
+- Orders skipped: 0
+
+Order Items Load:
+- Order items attempted: 35
+- Order items inserted: 35
+- Order items skipped: 0
+
+--------------------------------------------------
+5. OVERALL DATA QUALITY METRICS
+--------------------------------------------------
+
+Total Records Read:
+- Customers: 26
+- Products: 20
+- Sales: 41
+
+Total Records Removed During Cleaning:
+- Customer duplicates removed: 1
+- Sales duplicates removed: 1
+- Sales rows removed due to missing values: 5
+- Total sales rows removed: 6
+
+Final Clean Records Loaded to Database:
+- Customers: 25
+- Products: 20
+- Orders: 35
+- Order Items: 35
+
+--------------------------------------------------
+6. FINAL STATUS
+--------------------------------------------------
+
+✔ Customer data cleaned and loaded successfully
+✔ Product data cleaned and loaded successfully
+✔ Sales data cleaned, validated, and enriched
+✔ Referential integrity maintained
+✔ Database populated successfully
+✔ Clean CSV files generated for audit
+
+==============================
+ END OF DATA QUALITY REPORT
+==============================
