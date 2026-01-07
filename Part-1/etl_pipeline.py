@@ -28,7 +28,7 @@ print(" MySQL connection successful")
 # # STEP 2: READ CSV FILE
 # # ==============================
 customers_raw_csv_path = (
-    r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\Data\customers_raw.csv"
+    r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\data\customers_raw.csv"
 )
 
 print("STEP 3: Checking CSV path...")
@@ -112,7 +112,7 @@ def debug(msg):
 # # ==============================
 # # CSV INPUT PATH
 # # ==============================
-products_csv_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\Data\products_raw.csv"
+products_csv_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\data\products_raw.csv"
 
 debug(f"Reading CSV from: {products_csv_path}")
 
@@ -160,7 +160,7 @@ products_raw_df['stock_quantity'] = pd.to_numeric(
 # # ==============================
 # # SAVE CLEAN FILE (EXPLICIT PATH)
 # # ==============================
-output_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\Data\products_clean.csv"
+output_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\data\products_clean.csv"
 
 products_raw_df.to_csv(output_path, index=False)
 
@@ -171,7 +171,7 @@ print("📍 Location:", output_path, flush=True)
 # # SALES ETL - STEP 1: EXTRACT
 # # =====================================================
 
-sales_csv_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\Data\sales_raw.csv"
+sales_csv_path = r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\data\sales_raw.csv"
 
 sales_raw_df = pd.read_csv(sales_csv_path)
 
@@ -304,7 +304,7 @@ print(sales_raw_df['total_amount'].min(), sales_raw_df['total_amount'].max())
 # # SAVE CLEAN SALES CSV
 # # =====================================================
 
-sales_clean_path =r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\Data\sales_clean.csv"
+sales_clean_path =r"C:\Users\SAMHITHA SHARMA\Desktop\Fleximart\data\sales_clean.csv"
 sales_raw_df.to_csv(sales_clean_path, index=False)
 
 print(f"\n Clean sales data saved to {sales_clean_path}")
